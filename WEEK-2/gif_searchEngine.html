@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search for GIFs</title>
+    <style>
+      body {
+        width: 80%;
+        margin: 0 auto;
+      }
+      img.introimg{
+        margin: 5% 25% ;
+        border-radius: 10px;
+        box-shadow: -2px 1px 23px 4px rgb(255, 122, 122) ;
+      }
+      h1 {
+        color: rgb(208, 255, 0);
+        width:100%;
+        margin: 0 auto;
+        font-weight: bolder;
+        text-shadow: 1px 1px 10px rgb(127, 255, 115); 
+      }
+      .searchbox .searchhere {
+        width: 80%;
+        padding: 5px;
+        margin: 10px 1px;
+        font-size: large;
+        border: 2px solid rgba(3, 255, 242, 0.733);
+        box-shadow: -2px 1px 23px 4px rgba(120, 255, 255, 0.438);
+        color: rgb(255, 83, 204);
+        font-weight: bold;
+      }
+      button.getgifs {
+        width: 10%;
+        padding: 5px;
+        margin: 10px 1px;
+        font-size: large;
+        border: 2px solid rgb(255, 122, 215);
+        box-shadow: -2px 1px 23px 4px rgba(253, 139, 219, 0.342);
+        color: rgb(3, 238, 255);
+        background-color: rgba(255, 255, 255, 0.692);
+      }
+      .searchbox .searchhere:hover,
+      button.getgifs:hover {
+        box-shadow: -2px 1px 23px 4px rgba(129, 126, 128, 0.603);
+      }
+      div.displayContainer .container-image {
+        width: 30%;
+        display: block;
+        float: left;
+        margin-right: 3%;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="introimg" src="ironman.png" alt="ironman">
+
+    <h1>Welcome to GIF Search Engine</h1>
+    <!-- add a static gif -->
+    <div class="searchbox">
+      <input type="text" class="searchhere" />
+      <button class="getgifs">GO!</button>
+    </div>
+    <div class="displayContainer"></div>
+    <script>
+      /* 1. Grab the input value */
+
+      document.querySelector(".getgifs").addEventListener("click", function() {
+        var input = document.querySelector(".searchere").value;
+
+        console.log(input);
+
+        // cleanContainer();
+
+        getAjax(input);
+      });
+
+      document.querySelector(".searchhere")
+        .addEventListener("keyup", function (e) {
+          var input = document.querySelector(".searchhere").value;
+
+          console.log(input);
+
+          if (e.which === 13) {
+            // cleanContainer();
+            getAjax(input);
+          }
+        });
+
+      /* 2. do the data stuff with the API */
+
+      function getAjax(inputTerm) {
+        var url =
+          "https://api.giphy.com/v1/gifs/search?api_key=nYT6obnqn5JVimZXEXQmOXybGiaVwXVk&q=" +
+          inputTerm;
+
+        // AJAX Request
+
+        var GiphyAJAXCall = new XMLHttpRequest();
+	      GiphyAJAXCall.open( 'GET', url );
+	      GiphyAJAXCall.send();
+
+
+        GiphyAJAXCall.addEventListener('load', function (data) {
+          var actualdata = data.target.response;
+
+          pushToDOM(actualdata);
+          console.log(actualdata);
+        });
+      }
+
+      // function cleanContainer() {
+      //   var container = document.querySelector(".displayContainer");
+
+      //   container.innerHTML = "";
+      // }
+
+      /* 3. Show me the GIFs */
+
+      function pushToDOM(response) {
+        response = JSON.parse(response);
+
+        var imageUrl = response.data;
+        // console.log(response);
+
+        var container = document.querySelector(".displayContainer");
+        container.innerHTML="";
+
+        imageUrl.forEach(function (image) {
+          var src = image.images.fixed_height.url;
+
+          container.innerHTML =container.innerHTML +  "<img src='"+ src +"' class='container-image' />";
+
+        });
+      }
+    </script>
+  </body>
+</html>

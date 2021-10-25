@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Happy Hour App - How about a drink!?">
+		<meta name="keywords" content="happy hour, drink, beers">
+
+		<title>Happy Hour</title>
+		
+		<!-- external CSS link -->
+		<!-- <link rel="stylesheet" href="css/normalize.css"> -->
+		<!-- <link rel="stylesheet" href="css/style.css"> -->
+		<style>
+			body {
+	background: #FF6600; /* hexadecimal number */
+	padding: 15px;
+	font-size: 30px;
+}
+		</style>
+
+		<script>
+		
+			// Our List of Bars
+			var bars = [
+				'Siggys',
+				'Blind Tiger',
+				'Zum Schneider',
+				'One Month',
+				'Home Sweet Home',
+				'Union Pool'
+			];
+
+			// Our List of Friends
+			var friends = [
+				'Mattan',
+				'Chris',
+				'Lee'
+			];
+
+			var randomNumber = Math.floor(Math.random()*bars.length);
+			
+			var barname = bars[randomNumber];
+			var friendname = friends[randomNumber];
+
+			document.write("How about you go to <strong>" + barname + "</strong> with <strong>" + friendname + "</strong>?");
+		
+			var places=[
+				'America','India',
+				'Russia','Japan',
+				'Australia','Dubai',
+				'Italy','France'
+			];
+			var Friends=[
+				'Aryan','Rishitha',
+				'Harivardhan','Vivek',
+				'Ganesh','Shiva','Parvathi',
+				'venkatesh','dadhatreya','lakshmi','Vishnu'
+			];
+			var pRandomNumber=Math.floor(Math.random()*places.length);
+			var fRandomNumber=Math.floor(Math.random()*Friends.length);
+			var Friends=Friends[fRandomNumber];
+			var placeName=places[pRandomNumber];
+
+			document.write("How about you go to <strong>" + placeName+ "</strong> with <strong>" + Friends + "</strong>?");
+			document.write("<br>"+ pRandomNumber+" , ");
+			document.write(fRandomNumber);
+
+
+
+
+			</script>
+	</head>
+	<body>
+		<!-- PAGE CONTENT WILL BE PRINTED HERE --> 
+	</body>
+</html>
+<!-- Here are 7 challenges that you need to do RIGHT NOW.
+These will help you learn JavaScript quicker than a fat baby sweats:
+
+1. If you wanted to see the results of randomNumber you could print that out by adding the following code after line 38:  
+
+document.write(randomNumber); 
+
+When you refresh what happens? 
+
+2. Did you notice that sometimes a 0 pops up? What's that about!? Do a quick Google Search and you'll learn that arrays always start with 0 (not 1). I just gave you that answer. Send it in as your answer and impress the hell out of your One Month Mentor. 
+
+3. What happens when you replace bars[randomNumber] with bars[3]?
+
+4. What does bars.length do? Print it out to see. 
+
+5. What does Math.floor do? Remove it to find out. 
+
+6. What is Math? No that's not a metaphysical question. Seriously, what is that word Math doing all around this code!? I challenge you to google it and come up with a good answer. Go deeper and print out some other Math methods. You can do this. And it all starts with one 6 letter word: GOOGLE. 
+
+7. Add one friend to the list of friends. 
+
+Bonus challenge: Remove 3 friends from the list of friends. Why does this give you an "undefined" result when you occasionally refresh? Can you fix the problem? -->

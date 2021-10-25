@@ -1,0 +1,62 @@
+
+<html lang="en">
+<head>
+</head>
+<body>
+    <!-- <div class="container"></div> -->
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="javascript/tableTop.js"></script>
+    <script type="text/javascript">
+
+        //1.Setting up tabletop.js using link:https://github.com/jsoma/tabletop
+        var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/10z_1RVVcjPeg7gUV4QZA5I5ka3oOSlMDhpfFJV4v6Dk/pubhtml';
+
+        function init() {
+        Tabletop.init( { key: publicSpreadsheetUrl,
+                        callback: showInfo,
+                        simpleSheet: true } )
+        }
+
+        function showInfo(data, tabletop) {
+        // alert('Successfully processed!')
+        // console.log(data);
+        // var container = document.querySelector(".container");
+        // container.innerHTML = "";
+
+        var doubles= data.map(function(data){
+            var obj={};
+            obj=[data.Name,Number(data.Amount)];
+            console.log(data.Name);
+            return obj;
+        });
+        drawChart(doubles);
+    }
+
+
+
+        //2.Google charts api : displaying using Pie Chart 
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(init);
+  
+        function drawChart(dataStuff){
+  
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('number', 'Amount');
+      
+            data.addRows(dataStuff);
+    
+            var options = {
+                title: 'Different IT Roles','width':800,
+                'height':800,
+                is3D:true
+            };
+    
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    
+            chart.draw(data, options);
+        }
+      </script>
+</html>
+</body>

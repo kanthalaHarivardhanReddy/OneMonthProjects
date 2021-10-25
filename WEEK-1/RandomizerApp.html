@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Randomizer App</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        h1{
+            font-size: 50px;
+            color: rgb(51, 255, 0);
+            text-shadow: rgb(166, 252, 132) 1px 0 10px;;
+        }
+        img{
+            width: 180px;
+            display:block;
+            margin: 0 auto;
+            box-shadow: 0px -1px 22px 9px rgba(136, 252, 184, 0.75);
+        }
+        img:hover{
+            width:300px;
+            cursor:pointer;
+        }
+    </style>
+  </head>
+  <body>
+    <script>
+      var PersonName = prompt("Hey, Who are you?");
+      var car = ["BMW", "AUDI", "Mustang GT", "CHEVROLET", "BENZ"];
+      var carRandom = Math.floor(Math.random() * car.length);
+      var carName = car[carRandom];
+      if (PersonName == "harivardhan") {
+        document.write("<h1>Hello, Harivardhan You won  " + carName+"  Car</h1>");
+        if(carName=='BMW'){
+            document.write('<img src="week1img/bmw.jpg" alt="BMW image" width ="400px" >');
+        }
+        else if(carName=='AUDI'){
+            document.write('<img src="week1img/audi.png" alt="audi image" width ="400px" >');
+        }
+        if(carName=='Mustang GT'){
+            document.write('<img src="week1img/mustangGT.jpg" alt="mustang GT image" width ="400px" >');
+        }
+        if(carName=='CHEVROLET'){
+            document.write('<img src="week1img/chevrolet.jpg" alt="chevrolet image" width ="400px" >');
+        }
+        if(carName=='BENZ'){
+            document.write('<img src="week1img/Mbenz.jpg" alt="Benz image" width ="400px" >');
+        }
+        
+      } 
+      else {
+        document.write("Hello  " + PersonName);
+      }
+    </script>
+  </body>
+</html>
